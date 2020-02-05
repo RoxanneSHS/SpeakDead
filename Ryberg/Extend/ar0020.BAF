@@ -1,0 +1,22 @@
+IF
+Global("CbDearPrudence","GLOBAL",0)
+LevelGT(Player1,9)
+OR(12)
+Class(Player1,MAGE_ALL)
+Class(Player2,MAGE_ALL)
+Class(Player3,MAGE_ALL)
+Class(Player4,MAGE_ALL)
+Class(Player5,MAGE_ALL)
+Class(Player6,MAGE_ALL)
+Class(Player1,CLERIC_ALL)
+Class(Player2,CLERIC_ALL) 
+Class(Player3,CLERIC_ALL) 
+Class(Player4,CLERIC_ALL) 
+Class(Player5,CLERIC_ALL) 
+Class(Player6,CLERIC_ALL)
+THEN
+RESPONSE #100
+SetGlobal("CbDearPrudence","GLOBAL",1)
+CreateCreatureOffScreen("CBRYBERG",6)
+Continue()
+END

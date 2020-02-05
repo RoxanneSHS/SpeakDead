@@ -1,0 +1,111 @@
+BACKUP ~Ryberg/backup~
+AUTHOR ~Roxanne@baldursextendedworld.com based on a Charles Bisson's CtB episode~
+
+AUTO_TRA ~Ryberg/TRA/%s~
+
+VERSION ~v0.1~
+
+LANGUAGE ~English~ ~english~ ~Ryberg/TRA/English/setup.tra~
+
+BEGIN ~Speak With the Dead~
+
+COPY ~Ryberg/bam~ ~override~
+
+COPY ~Ryberg/extend/CBRYBERG.CRE~ ~override~
+  SAY NAME1 @81
+  SAY NAME2 @81
+COPY ~Ryberg/extend/CBRYBREL.CRE~ ~override~
+  SAY NAME1 @82    
+  SAY NAME2 @82
+COPY ~Ryberg/extend/CBSPKDED.CRE~ ~override~
+  SAY NAME1 @89
+  SAY NAME2 @89
+  
+COPY ~Ryberg/extend/CBRYBERG.ITM~ ~override~
+  SAY UNIDENTIFIED_DESC @650495
+COPY ~Ryberg/extend/CBSPKDED.ITM~ ~override~
+  SAY NAME2  @267
+  SAY DESC   @268
+COPY ~Ryberg/extend/CBSPKDED.SPL~ ~override~
+  SAY NAME1  @267
+  SAY UNIDENTIFIED_DESC @268
+
+EXTEND_TOP ~ar0020.bcs~ ~Ryberg/extend/ar0020.BAF~
+EXTEND_TOP ~ar0300.bcs~ ~Ryberg/extend/ar0020.BAF~
+EXTEND_TOP ~ar0400.bcs~ ~Ryberg/extend/ar0020.BAF~
+EXTEND_TOP ~ar0500.bcs~ ~Ryberg/extend/ar0020.BAF~
+EXTEND_TOP ~ar0700.bcs~ ~Ryberg/extend/ar0020.BAF~
+EXTEND_TOP ~ar0900.bcs~ ~Ryberg/extend/ar0020.BAF~
+EXTEND_TOP ~ar1000.bcs~ ~Ryberg/extend/ar0020.BAF~
+
+COMPILE ~Ryberg/baf~
+COMPILE ~Ryberg/d~
+
+ADD_JOURNAL @78 @79 @80 @81 @82 USING ~Ryberg/TRA/%s/CBRYBERG.TRA~
+
+COPY_EXISTING ~doghma.sto~ ~override~
+  ADD_STORE_ITEM ~CBSPKDED~ #2 #0 #0 ~IDENTIFIED~ #3
+
+COPY_EXISTING ~AR0204.are~  ~override~
+	READ_LONG  0x70  "cont_offset"
+	READ_SHORT 0x74  "cont_num"
+	FOR( cnt=0; cnt<"%cont_num%"; cnt=cnt+1 ) BEGIN
+		READ_ASCII ("%cont_offset%"+0xc0*cnt)       "cont_name" (11)
+		PATCH_IF (("%cont_name%" STRING_COMPARE_CASE "Container 3")=0) BEGIN
+			LPF fj_are_structure
+				INT_VAR
+				fj_con_itm_idx    = EVAL cnt
+				STR_VAR
+				fj_name           = CBRYBERG
+				fj_structure_type = itm
+			END
+		END
+	END
+	
+COPY_EXISTING ~AR0801.are~           ~override~
+	READ_LONG  0x70  "cont_offset"
+	READ_SHORT 0x74  "cont_num"
+	FOR( cnt=0; cnt<"%cont_num%"; cnt=cnt+1 ) BEGIN
+		READ_ASCII ("%cont_offset%"+0xc0*cnt)       "cont_name" (7)
+		PATCH_IF (("%cont_name%" STRING_COMPARE_CASE "Chest 3")=0) BEGIN
+			LPF fj_are_structure
+				INT_VAR
+				fj_con_itm_idx    = EVAL cnt
+				STR_VAR
+				fj_name           = CBSPKDED
+				fj_structure_type = itm
+			END
+		END
+	END
+	
+COPY_EXISTING ~AR1601.are~           ~override~
+	READ_LONG  0x70  "cont_offset"
+	READ_SHORT 0x74  "cont_num"
+	FOR( cnt=0; cnt<"%cont_num%"; cnt=cnt+1 ) BEGIN
+		READ_ASCII ("%cont_offset%"+0xc0*cnt)       "cont_name" (8)
+		PATCH_IF (("%cont_name%" STRING_COMPARE_CASE "Barrel 1")=0) BEGIN
+			LPF fj_are_structure
+				INT_VAR
+				fj_con_itm_idx    = EVAL cnt
+				STR_VAR
+				fj_name           = CBSPKDED
+				fj_structure_type = itm
+			END
+		END
+	END
+
+ COPY_EXISTING ~AR5004.are~           ~override~
+	READ_LONG  0x70  "cont_offset"
+	READ_SHORT 0x74  "cont_num"
+	FOR( cnt=0; cnt<"%cont_num%"; cnt=cnt+1 ) BEGIN
+		READ_ASCII ("%cont_offset%"+0xc0*cnt)       "cont_name"
+		PATCH_IF (("%cont_name%" STRING_COMPARE_CASE "Shelf1")=0) BEGIN
+			LPF fj_are_structure
+				INT_VAR
+				fj_con_itm_idx    = EVAL cnt
+				STR_VAR
+				fj_name           = CBSPKDED
+				fj_structure_type = itm
+			END
+		END
+	END
