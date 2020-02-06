@@ -93,4 +93,5 @@ The mage I met some time ago up in the village of Soubar is on holiday here in A
 I found the book that the mage Ceeb was looking for.  I'll have to return to the Docks to give the book to him.~
 @83 = ~Yes, I have a mage travelling with me. Why?~
 @84 = ~I have a cleric travelling with me. Why?~
-@85   = ~I am a cleric and can cast from scrolls. Why?~
+@85 = ~I am a cleric and can cast from scrolls. Why?~
+@86 = ~Please cast the spell now.~  

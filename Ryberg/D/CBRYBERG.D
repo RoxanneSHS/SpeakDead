@@ -321,3 +321,8 @@ IF ~~ THEN BEGIN 47
   SAY @77
   IF ~~ THEN EXIT
 END
+
+IF~Global("CbHelpRyberg","GLOBAL",2)Global("CbRybergMeetsRelative","GLOBAL",0)~ THEN BEGIN 48
+  SAY @86
+   IF ~~ THEN EXIT
+END
