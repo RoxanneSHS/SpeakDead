@@ -3,7 +3,7 @@ AUTHOR ~Roxanne@baldursextendedworld.com based on a Charles Bisson's CtB episode
 
 AUTO_TRA ~Ryberg/TRA/%s~
 
-VERSION ~v0.2~
+VERSION ~v0.3~
 
 LANGUAGE ~English~ ~english~ ~Ryberg/TRA/English/setup.tra~
 LANGUAGE ~Russian (by Arcanecoast.ru)~ ~russian~ ~Ryberg/TRA/Russian/setup.tra~
