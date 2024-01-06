@@ -1,9 +1,9 @@
 BACKUP ~Ryberg/backup~
-AUTHOR ~Roxanne@baldursextendedworld.com based on a Charles Bisson's CtB episode~
+AUTHOR ~Roxanne based on a Charles Bisson's CtB episode~
 
 AUTO_TRA ~Ryberg/TRA/%s~
 
-VERSION ~v0.3~
+VERSION ~v0.4~
 
 LANGUAGE ~English~ ~english~ ~Ryberg/TRA/English/setup.tra~
 LANGUAGE ~Russian (by Arcanecoast.ru)~ ~russian~ ~Ryberg/TRA/Russian/setup.tra~

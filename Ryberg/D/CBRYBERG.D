@@ -139,8 +139,11 @@ IF ~~ THEN BEGIN 23
   IF ~PartyHasItem("CBSPKDED")~ THEN REPLY @40 GOTO 25
   IF ~PartyHasItem("CBSPKDED")~ THEN REPLY @41 GOTO 26
   IF ~~ THEN REPLY @42 GOTO 41
-  IF ~PartyHasItem("CBSPKDED")
-Global("PlayerHasStronghold","GLOBAL",1)~ THEN REPLY @43 GOTO 42
+  IF ~PartyHasItem("CBSPKDED")  OR(4)
+Global("PlayerHasStronghold","GLOBAL",1)
+Global("PCKeepowner","GLOBAL",1)
+GlobalGT("RangerProtector","GLOBAL",0)
+GlobalGT("DomainPaladinBattle","GLOBAL",1)~ THEN REPLY @43 GOTO 42
 END
 
 IF ~~ THEN BEGIN 24
